@@ -10,3 +10,9 @@ for i in range(1, int(numberA) + 1):
     print(i)
 
 
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    if i == 6:
+        break
+    print(i)
