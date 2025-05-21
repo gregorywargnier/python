@@ -1,4 +1,3 @@
-"""""
 #1
 def show_message(name):
 
@@ -89,14 +88,56 @@ word_frequency = []
 for words in word:
     word_frequency.append(word.count(words))
 print(str(list(zip(word_frequency))))
-"""
+
 #9
-dist1 = {'a': 1, 'b': 2}
-dist2 = {'b': 3, 'c': 4}
-dist_list = [dist1, dist2]
-#print(dist_list)
-def merge_conflits(**dist_list):
-    for key, value in dist_list.items():
-        print(f"{key} : {value}")
+def merge_dicts(dict1, dict2):
+    merged = dict1.copy()
+
+    for key, value in dict2.items():
+        if key in merged:
+
+            if isinstance(merged[key], (int, float)) and isinstance(value, (int, float)):
+                merged[key] += value
+
+            elif isinstance(merged[key], str) and isinstance(value, str):
+                merged[key] += value
+            else:
+                raise ValueError(f"Conflit de type entre les valeurs pour la clé '{key}'")
+        else:
+            merged[key] = value
+
+    return merged
+
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+result = merge_dicts(dict1, dict2)
+print(result)
 
 #10
+list_of_dicts = ([{'name': 'Alice', 'age': 30}, {'name': 'Bob', 'age': 25}])
+
+def sort_by_key(list_of_dicts):
+    list_of_dicts.sort(key=lambda x: x['age'])
+    return list_of_dicts
+print(sort_by_key(list_of_dicts))
+
+#11
+
+
+def generate_matrix(n):
+    matrix = []
+
+    for i in range(n):
+        row = []
+        for j in range(n):
+            row.append(i + j)
+        matrix.append(row)
+
+    return matrix
+
+
+n = 3
+matrix = generate_matrix(n)
+for row in matrix:
+    print(row)
